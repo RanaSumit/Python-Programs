@@ -27,7 +27,7 @@ from termcolor import colored
 from email.utils import parsedate
 
 #-----------------------------------------------------------------------
-# load our API credentials 
+# load our API credentials
 #-----------------------------------------------------------------------
 config = {}
 execfile("config.py", config)
@@ -37,7 +37,7 @@ sys.setdefaultencoding('utf-8')
 
 # AFINN-111 is as of June 2011 the most recent version of AFINN
 filenameAFINN = 'AFINN-111.txt'
-afinn = dict(map(lambda ws: (w, int(s)), [
+afinn = dict(map(lambda (w, s): (w, int(s)), [
             ws.strip().split('\t') for ws in open(filenameAFINN) ]))
 
 # Word splitter pattern
@@ -49,15 +49,15 @@ pattern_split = re.compile(r"\W+")
 def sentiment(text):
     """
     Returns a float for sentiment strength based on the input text.
-    Positive values are positive valence, negative value are negative valence. 
+    Positive values are positive valence, negative value are negative valence.
     """
     words = pattern_split.split(text.lower())
     sentiments = map(lambda word: afinn.get(word, 0), words)
     if sentiments:
-        # How should you weight the individual word sentiments? 
+        # How should you weight the individual word sentiments?
         # You could do N, sqrt(N) or 1 for example. Here I use sqrt(N)
         sentiment = float(sum(sentiments))/math.sqrt(len(sentiments))
-        
+
     else:
         sentiment = 0
     return sentiment
@@ -105,29 +105,30 @@ for tweet in tweet_iter:
 			# add some indenting to each line and wrap the text nicely
 			indent = " " * 11
 			text_colored = fill(text_colored, 80, initial_indent = indent, subsequent_indent = indent)
-			print ("TWEET NUMBER " + str(i))
+			print "TWEET NUMBER " + str(i)
 			# now output our tweet
-			print ("(%s) @%s" % (time_colored, user_colored))
-			print ("%s" % (text_colored))
+			print "(%s) @%s" % (time_colored, user_colored)
+			print "%s" % (text_colored)
 			i=i+1
 			sentiments = map(sentiment, [ tweet['text'] ])
 			Sentimentscore=sum(sentiments)/math.sqrt(len(sentiments))
 			if Sentimentscore>0.0:
 				positive=positive+1
-				print ("POSITIVE TWEET")
-					  			
+				print "POSITIVE TWEET"
+
 			elif Sentimentscore<0.0:
 				negative=negative+1
-				print ("NEGATIVE TWEET")
-					  			
+				print "NEGATIVE TWEET"
+
 			elif Sentimentscore==0.0 :
 				neutral=neutral+1
-				print ("NEUTRAL TWEET")
+				print "NEUTRAL TWEET"
 		else:
 			break
 
-print ("SEARCHED TERM " + search_term)
-print ("GEO LOCATION SAN JOSE")
-print ("TOTAL TWEETS ANALYZED 100")
-print ("COUNT OF POSITIVE IS "+str(positive)+ "  COUNT OF NEGATIVE IS "+str(negative) + "  COUNT OF NEUTRAL IS "+ str (neutral))
+print "SEARCHED TERM " + search_term
+print "GEO LOCATION SAN JOSE"
+print "TOTAL TWEETS ANALYZED 100"
+print "COUNT OF POSITIVE IS "+str(positive)+ "  COUNT OF NEGATIVE IS "+str(negative) + "  COUNT OF NEUTRAL IS "+ str (neutral)
+
 
