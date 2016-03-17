@@ -2,5 +2,6 @@
 Twitter Sentiment Analysis
 
 # How to Run
-Enter your Twitter API keys in config.py
-In terminal: python TwitterAnalysis.py
+1. Enter your Twitter API keys in config.py
+
+2. In terminal: python TwitterAnalysis.py
