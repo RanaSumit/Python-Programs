@@ -4,7 +4,7 @@
 #	https://apps.twitter.com/app/new
 #--------------------------------------------------------------------------------
 
-consumer_key = 'ZTdlGtRjnkDmqAloKC6WQj04I'
-consumer_secret = 'VNlrCtUanvjuHfe2d0FL0lprBkpjJJhUF8ymtI8GpHGXN7u1TI'
-access_token = '151759274-PtMZiaaUk51HDvjzNfSLXuRPUAFHbfMNvD5oK8yG'
-access_secret = 'mCebLrLDhcBNRqlqUqdFvGSo4XYroVBUZWVXlffWaTaei'
+consumer_key = 'Enter your key'
+consumer_secret = 'Enter your Key'
+access_token = 'Enter your key'
+access_secret = 'Enter your key'
