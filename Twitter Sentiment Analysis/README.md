@@ -5,5 +5,7 @@ Analyze sentiments of current Twitter feeds (Positive, Negative or Neutral) base
 ```sh
 1. Enter your Twitter API keys in config.py
 
-2. In terminal: python TwitterAnalysis.py
+2. Enter your keyword and geo-coordinates in TwitterAnalysis.py
+
+3. In terminal: python TwitterAnalysis.py
 ```
